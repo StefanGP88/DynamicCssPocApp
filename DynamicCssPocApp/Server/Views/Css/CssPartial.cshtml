@@ -1,0 +1,14 @@
+﻿@using DynamicCssPocApp.Shared
+@namespace DynamicCssPocApp.Css
+
+@model ThemeData
+
+<style>
+
+    :root {
+        --box-color: @($"{Model.Color};");
+        --box-height: @($"{Model.Height};");
+        --box-width: @($"{Model.Width};");
+    }
+
+</style>
