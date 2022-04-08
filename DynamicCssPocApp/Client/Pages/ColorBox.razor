@@ -8,10 +8,10 @@
     </div>
     <div class="colorbox-creator">
         <label>Height:</label>
-        <input type="text" @bind-value="height" />
+        <input type="number" @bind-value="height" />
         <br />
         <label>Width:</label>
-        <input type="text" @bind-value="width" />
+        <input type="number" @bind-value="width" />
         <br />
         <label>Color:</label>
         <input type="color" @bind-value="color" />
@@ -24,22 +24,24 @@
 
 
 @code {
-    public string height { get; set; } = "";
-    public string width { get; set; } = "";
-    public string color { get; set; } = "";
+    public int height { get; set; }
+    public int width { get; set; }
+    public string color { get; set; } = "#000000";
 
     public async Task Click()
     {
+        Console.WriteLine(color);
+
         var data = new ThemeData()
-        {
-            Color = color,
-            Height = height,
-            Width = width
-        };
+            {
+                Color = color,
+                Height = height + "px",
+                Width = width + "px"
+            };
         await Http.PostAsJsonAsync("/Theme", data);
 
-        height = "";
-        width = "";
-        color = "";
+        height = 0;
+        width = 0;
+        color = "#000000";
     }
 }
