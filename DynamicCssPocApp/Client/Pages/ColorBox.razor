@@ -1,0 +1,45 @@
+﻿@page "/colorbox"
+@using DynamicCssPocApp.Shared
+@using System.Net.Http.Json
+@inject HttpClient Http
+
+<div class="colorbox-container">
+    <div class="colorbox">
+    </div>
+    <div class="colorbox-creator">
+        <label>Height:</label>
+        <input type="text" @bind-value="height" />
+        <br />
+        <label>Width:</label>
+        <input type="text" @bind-value="width" />
+        <br />
+        <label>Color:</label>
+        <input type="color" @bind-value="color" />
+        <br />
+        <button @onclick="@(async ()=> await Click())">Save</button>
+    </div>
+
+</div>
+
+
+
+@code {
+    public string height { get; set; } = "";
+    public string width { get; set; } = "";
+    public string color { get; set; } = "";
+
+    public async Task Click()
+    {
+        var data = new ThemeData()
+        {
+            Color = color,
+            Height = height,
+            Width = width
+        };
+        await Http.PostAsJsonAsync("/Theme", data);
+
+        height = "";
+        width = "";
+        color = "";
+    }
+}

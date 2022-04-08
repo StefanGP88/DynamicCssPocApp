@@ -2,8 +2,8 @@ namespace DynamicCssPocApp.Shared
 {
     public class ThemeData
     {
-        public int Width { get; set; }
-        public int Height { get; set; }
+        public string Width { get; set; } = default!;
+        public string Height { get; set; } = default!;
         public string Color { get; set; } = default!;
     }
 }

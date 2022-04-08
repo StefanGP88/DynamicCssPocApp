@@ -1,0 +1,16 @@
+﻿.colorbox-container
+{
+    width:100%;
+    height:100%;
+    padding:50px;
+}
+
+.colorbox {
+    width: var(--box-width);
+    height: var(--box-height);
+    background-color: var(--box-color);
+}
+
+.colorbox-creator{
+    margin-top:50px;
+}
